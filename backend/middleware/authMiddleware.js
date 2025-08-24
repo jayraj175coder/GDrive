@@ -30,8 +30,10 @@ const authMiddleware = async (req, res, next) => {
     // Attach user to request object
     req.user = user;
   } catch (err) {
-    res.status(401).json({ msg: "Token is not valid" });
+    return res.status(401).json({ msg: "Token is not valid" });
   }
+  
+  next();
 };
 
 module.exports = authMiddleware;
