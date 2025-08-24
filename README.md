@@ -1,4 +1,4 @@
-# 🖼️ Image Uploader - Full Stack Web Application
+# 🖼️ Image Uploader (GDRIVE CLONE)- Full Stack Web Application
 
 A modern web application where users can register, create nested folders, upload images, and search through their content with user-specific access control.
 
@@ -199,6 +199,6 @@ REACT_APP_API_URL=http://localhost:5000/api
 5. Submit a pull request
 
 
-**Made with ❤️ by [Your Name]**
+**Made with ❤️ by Jayrj**
 
 **Happy Coding! 🚀** 
