@@ -17,11 +17,31 @@ navigate('/dashboard');
 
 
 return (
-<form onSubmit={handleSubmit}>
-<h2>Login</h2>
-<input placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} />
-<input type="password" placeholder="Password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
-<button type="submit">Login</button>
-</form>
+  <div className="auth-container">
+    <div className="auth-card">
+      <h2>Welcome Back</h2>
+      <form onSubmit={handleSubmit} className="auth-form">
+        <div className="form-group">
+          <input 
+            placeholder="Email" 
+            type="email"
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            className="auth-input"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input 
+            type="password" 
+            placeholder="Password" 
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            className="auth-input"
+            required
+          />
+        </div>
+        <button type="submit" className="auth-button">Log In</button>
+      </form>
+    </div>
+  </div>
 );
 }

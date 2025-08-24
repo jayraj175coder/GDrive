@@ -14,18 +14,38 @@ const upload = multer({ storage });
 exports.uploadMiddleware = upload.single("image");
 
 exports.uploadImage = async (req, res) => {
-  const { name, folder } = req.body;
   try {
+    const { name, folder } = req.body;
+    
+    // Check if file was uploaded
+    if (!req.file) {
+      return res.status(400).json({ message: 'No image file uploaded' });
+    }
+    
+    // Check if name is provided
+    if (!name) {
+      return res.status(400).json({ message: 'Image name is required' });
+    }
+    
     const image = new Image({
       name,
       filePath: req.file.path,
       folder: folder || null,
       user: req.user.id
     });
+    
     await image.save();
-    res.json(image);
+    
+    // Return the saved image with populated user info
+    const savedImage = await Image.findById(image._id).populate('user', 'username');
+    
+    res.status(201).json({
+      success: true,
+      image: savedImage
+    });
   } catch (err) {
-    res.status(500).send("Server error");
+    console.error('Image upload error:', err);
+    res.status(500).json({ message: 'Server error during image upload' });
   }
 };
 

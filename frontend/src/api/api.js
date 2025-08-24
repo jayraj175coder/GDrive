@@ -23,8 +23,7 @@ export const createFolder = (data) => API.post('/folders', data);
 export const getFolders = () => API.get('/folders');
 
 // Images
-export const uploadImage = (data, folderId) => 
-  API.post('/images', { ...data, folder: folderId || null });
+export const uploadImage = (formData) => API.post('/images', formData);
 
 export const getImages = (folderId) => 
   folderId ? 

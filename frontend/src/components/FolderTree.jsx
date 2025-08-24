@@ -28,17 +28,56 @@ fetchFolders();
 
 
 return (
-<div>
-<h3>Folders</h3>
-<input value={name} onChange={(e) => setName(e.target.value)} placeholder="Folder name" />
-<button onClick={handleCreate}>Create Folder</button>
-<ul>
-{folders.map(folder => (
-<li key={folder._id} onClick={() => onSelectFolder(folder._id)}>
-{folder.name}
-</li>
-))}
-</ul>
-</div>
+  <div className="folder-tree">
+    <div className="folder-actions">
+      <h3>Create New Folder</h3>
+      <div className="folder-form">
+        <input 
+          value={name} 
+          onChange={(e) => setName(e.target.value)} 
+          placeholder="Folder name" 
+          className="folder-name-input"
+        />
+        <select 
+          value={parentId || ''} 
+          onChange={(e) => setParentId(e.target.value || null)}
+          className="parent-folder-select"
+        >
+          <option value="">No parent folder</option>
+          {folders.map(folder => (
+            <option key={folder._id} value={folder._id}>
+              {folder.name}
+            </option>
+          ))}
+        </select>
+        <button 
+          onClick={handleCreate} 
+          className="create-folder-btn"
+          disabled={!name.trim()}
+        >
+          Create Folder
+        </button>
+      </div>
+    </div>
+    
+    <div className="folders-list">
+      <h3>Your Folders</h3>
+      {folders.length === 0 ? (
+        <p className="no-folders">No folders created yet</p>
+      ) : (
+        <ul className="folders-ul">
+          {folders.map(folder => (
+            <li 
+              key={folder._id} 
+              onClick={() => onSelectFolder(folder._id)}
+              className="folder-item"
+            >
+              📁 {folder.name}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </div>
 );
 }
