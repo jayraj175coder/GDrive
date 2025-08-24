@@ -112,6 +112,48 @@ body {
   font-weight: 600;
 }
 
+.current-folder-info {
+  background: #e3f2fd;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #667eea;
+}
+
+.folder-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.current-folder-info h3 {
+  color: #1976d2;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.clear-selection-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.clear-selection-btn:hover {
+  background: #d32f2f;
+}
+
+.folder-path {
+  color: #424242;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 /* Upload Section */
 .upload-section {
   background: #f8f9fa;
@@ -234,20 +276,122 @@ body {
   list-style: none;
 }
 
+.folder-tree-container {
+  margin-top: 10px;
+}
+
+.folder-tree-item {
+  margin: 2px 0;
+}
+
 .folder-item {
   padding: 12px 15px;
-  margin: 5px 0;
+  margin: 2px 0;
   background: #f8f9fa;
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
   border-left: 4px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
 }
 
 .folder-item:hover {
   background: #e9ecef;
   border-left-color: #667eea;
   transform: translateX(5px);
+}
+
+.folder-item.level-0 {
+  border-left-color: #667eea;
+  background: #e3f2fd;
+  font-weight: 600;
+}
+
+.folder-item.level-1 {
+  border-left-color: #4caf50;
+  margin-left: 20px;
+  background: #f1f8e9;
+}
+
+.folder-item.level-2 {
+  border-left-color: #ff9800;
+  margin-left: 40px;
+  background: #fff3e0;
+}
+
+.folder-item.level-3 {
+  border-left-color: #9c27b0;
+  margin-left: 60px;
+  background: #f3e5f5;
+}
+
+.folder-item.level-4 {
+  border-left-color: #e91e63;
+  margin-left: 80px;
+  background: #fce4ec;
+}
+
+.folder-item.level-5 {
+  border-left-color: #607d8b;
+  margin-left: 100px;
+  background: #eceff1;
+}
+
+.expand-icon {
+  cursor: pointer;
+  font-size: 12px;
+  color: #666;
+  user-select: none;
+  min-width: 16px;
+  text-align: center;
+}
+
+.expand-icon:hover {
+  color: #333;
+}
+
+.expand-icon-placeholder {
+  min-width: 16px;
+}
+
+.folder-icon {
+  font-size: 16px;
+}
+
+.folder-name {
+  flex: 1;
+}
+
+.child-count {
+  color: #666;
+  font-size: 12px;
+  background: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.folder-children {
+  margin-left: 20px;
+  border-left: 2px dashed #dee2e6;
+  padding-left: 15px;
+}
+
+.folder-item.selected {
+  background: #667eea !important;
+  color: white;
+  border-left-color: #fff !important;
+}
+
+.folder-item.selected .child-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.folder-item.selected .expand-icon {
+  color: white;
 }
 
 .no-folders {

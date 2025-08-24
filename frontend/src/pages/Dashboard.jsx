@@ -5,10 +5,11 @@ import { uploadImage, getImages } from '../api/api';
 
 
 export default function Dashboard() {
-const [selectedFolder, setSelectedFolder] = useState(null);
-const [images, setImages] = useState([]);
-const [file, setFile] = useState(null);
-const [name, setName] = useState('');
+  const [selectedFolder, setSelectedFolder] = useState(null);
+  const [selectedFolderName, setSelectedFolderName] = useState('');
+  const [images, setImages] = useState([]);
+  const [file, setFile] = useState(null);
+  const [name, setName] = useState('');
 
 
 useEffect(() => {
@@ -55,12 +56,21 @@ return (
   <div className="dashboard">
     <div className="sidebar">
       <h2>Folders</h2>
-      <FolderTree onSelectFolder={setSelectedFolder} />
+      <FolderTree onSelectFolder={(folderId, folderName) => {
+        setSelectedFolder(folderId);
+        setSelectedFolderName(folderName);
+      }} selectedFolderId={selectedFolder} />
     </div>
     
     <div className="main-content">
       <div className="header">
         <h1>Image Manager</h1>
+        {selectedFolder && (
+          <div className="current-folder-info">
+            
+            <p className="folder-path">📁 {selectedFolderName}</p>
+          </div>
+        )}
         {selectedFolder && (
           <div className="upload-section">
             <h3>Upload Image to Current Folder</h3>
