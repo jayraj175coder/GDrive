@@ -1,0 +1,22 @@
+# Ignore all log files
+*.log
+
+# Ignore the 'temp' directory
+temp/
+
+# Ignore a specific file
+sensitive_data.txt
+
+# Ignore all files in the 'build' directory and its subdirectories
+build/
+
+node_modules/
+
+# Environment variables
+
+.env
+.env.*
+
+
+# Exception: don't ignore 'important.log' even if it's a log file
+!important.log
