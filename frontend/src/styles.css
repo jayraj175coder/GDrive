@@ -1,0 +1,25 @@
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+.navbar {
+background: #222;
+color: #fff;
+padding: 10px;
+display: flex;
+justify-content: space-between;
+}
+.navbar button {
+margin-left: 10px;
+}
+.images {
+display: flex;
+flex-wrap: wrap;
+gap: 15px;
+}
+.image-card {
+border: 1px solid #ddd;
+padding: 10px;
+border-radius: 8px;
+}
