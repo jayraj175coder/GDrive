@@ -14,10 +14,22 @@ return req;
 });
 
 
+// Auth
 export const signup = (formData) => API.post('/auth/signup', formData);
 export const login = (formData) => API.post('/auth/login', formData);
+
+// Folders
 export const createFolder = (data) => API.post('/folders', data);
 export const getFolders = () => API.get('/folders');
-export const uploadImage = (data) => API.post('/images', data);
-export const getImages = (folderId) => API.get(`/images/${folderId}`);
-export const searchImages = (query) => API.get(`/images/search?query=${query}`);
+
+// Images
+export const uploadImage = (data, folderId) => 
+  API.post('/images', { ...data, folder: folderId || null });
+
+export const getImages = (folderId) => 
+  folderId ? 
+    API.get(`/images/folder/${folderId}`) : 
+    API.get('/images');
+
+export const searchImages = (query) => 
+  API.get('/images/search', { params: { query } });

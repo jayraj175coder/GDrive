@@ -41,3 +41,23 @@ exports.searchImages = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+
+exports.getImagesByFolder = async (req, res) => {
+  try {
+    const query = { user: req.user.id };
+    
+    // Check if we're getting images for a specific folder
+    if (req.params.folderId) {
+      query.folder = req.params.folderId;
+    } else {
+      // If no folder ID is provided, get images not in any folder
+      query.folder = { $exists: false };
+    }
+    
+    const images = await Image.find(query);
+    res.json(images);
+  } catch (err) {
+    console.error('Error fetching images:', err);
+    res.status(500).json({ message: 'Server error while fetching images' });
+  }
+};

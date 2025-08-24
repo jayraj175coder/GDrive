@@ -10,9 +10,22 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// Debug logging middleware
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.originalUrl}`);
+  next();
+});
+
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
+
+// Test route
+app.get('/api/test', (req, res) => {
+  console.log('Test route hit!');
+  res.json({ message: 'Test route works!' });
+});
 
 // Routes
 app.use("/api/auth", authRoutes);

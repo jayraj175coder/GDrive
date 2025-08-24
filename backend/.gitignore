@@ -12,10 +12,7 @@ build/
 
 node_modules/
 
-# Environment variables
 
-.env
-.env.*
 
 
 # Exception: don't ignore 'important.log' even if it's a log file
